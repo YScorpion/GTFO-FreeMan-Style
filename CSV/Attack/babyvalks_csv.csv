@@ -1,0 +1,48 @@
+NOTE  |Author: Ahsan - ver. 0.1-
+NOTE  |Attack: BabyValks
+NOTE  |Make Troops: 16 babydrag, 7-12 valks
+NOTE  |Make Spells: 1 jump, 1-2 rage, 1-2 freeze
+
+      |-----------------------------------------------------------------------------------------------|
+      |                                                                                               |
+      |                                                                                               |
+
+      |EXTR. GOLD |EXTR.ELIXIR|EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE|
+SIDE  |0          |0          |0          |0          |0          |0          |10         |EAGLE      |
+
+
+      |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|
+MAKE  |A          |FRONT-LEFT |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |B          |FRONT-RIGHT|10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |C          |LEFT-FRONT |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |D          |LEFT-BACK  |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |E          |BACK-LEFT  |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |F          |BACK-RIGHT |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |G          |RIGHT-BACK |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |H          |BACK-FRONT |10         |1          |INT-EXT    |0          |1          |           |
+MAKE  |I          |FRONT-LEFT |10         |-7         |INT-EXT    |0          |0          |           |
+MAKE  |J          |FRONT-LEFT |10         |-7         |INT-EXT    |0          |0          |           |
+MAKE  |K          |FRONT-LEFT |10         |-14        |INT-EXT    |0          |0          |           |
+
+
+
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |
+DROP  |A-B        |3,7        |2          |babyd      |5-10       |0          |350-500    |           |
+DROP  |C-D        |3,7        |2          |babyd      |5-10       |0          |350-500    |           |
+DROP  |E-F        |3,7        |2          |babyd      |5-10       |0          |350-500    |           |
+DROP  |G-H        |3,7        |2          |babyd      |5-10       |0          |350-500    |           |
+DROP  |A          |1          |1          |king       |0          |0          |100-300    |           |
+DROP  |I          |1          |1          |Jspell     |0          |0          |300-500    |           |
+DROP  |A          |1          |1          |queen      |0          |0          |100-300    |           |
+DROP  |A          |1          |12         |valks      |10-20      |0          |350-500    |           |
+DROP  |F          |1          |1          |Rspell     |1          |0          |100-200    |           |
+
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |
+WAIT  |4000-5000  |           |           |           |           |           |           |           |
+DROP  |G          |1          |1          |Rspell     |1          |0          |100-200    |           |
+
+      |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
+DROPS |EAGLE      |R:T,B:F,S:A,L:T|1          |FSpell     |0          |0          |0          |            |
+
+      |DEFENSE____|OPTIONS________|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|____________|
+DROPS |INFERNO    |R:T,B:T,S:A,L:T|1          |FSpell     |0          |0          |0          |            |

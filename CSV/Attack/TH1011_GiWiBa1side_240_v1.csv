@@ -1,0 +1,32 @@
+NOTE  |GiWiBa Onesided Attack
+NOTE  |Attack: 1sided GiWiBa, +1 tile from redline
+NOTE  |Make these Troops: 12 Giants, 8 Wallbreaker, 26 Wizards, 60 Barbarians
+
+      |EXTR. GOLD |EXTR.ELIXIR|EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE|
+SIDE  |           |           |1          |           |           |           |           |           |
+
+      |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|MAKE BARBARIAN VECTORS
+MAKE  |A          |FRONT-RIGHT|15         |1          |EXT-INT    |2          |2          |           |
+MAKE  |B          |FRONT-LEFT |15         |1          |Ext-INT    |2          |2          |           |
+
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|DROP BARB, ARCH, GIANT
+DROP  |A-B        |10         |6          |giant      |5          |5          |50         |           |Launch giants using all 4 vectors concurrently...             1 giant
+DROP  |A-B        |1-15       |15         |barb       |5          |5          |500        |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |3-15       |13         |wiza       |5          |5          |50         |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |1-15       |15         |barb       |5          |5          |500        |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |8          |2          |wall       |5          |5          |1000       |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |12         |2          |wall       |5          |5          |1000       |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A          |15         |1          |castle     |0          |0          |0          |           |Launch Castle                                                   castle
+DROP  |A          |15         |1          |king       |0          |0          |0          |           |Launch King                                                     king
+DROP  |A          |15         |1          |queen      |0          |0          |0          |           |Launch Queen                                                    queen
+DROP  |A          |15         |1          |Warden     |0          |0          |0          |           |Launch Grand Warden                                             warden
+
+RECALC|           |           |           |           |           |           |           |           |Recalculate remaining troops and then launch...
+
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|DROP BARB, ARCH, GIANT
+DROP  |A-B        |10         |6          |giant      |5          |5          |50         |           |Launch giants using all 4 vectors concurrently...             1 giant
+DROP  |A-B        |1-15       |15         |barb       |5          |5          |500        |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |3-15       |13         |wiza       |5          |5          |50         |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |1-15       |15         |barb       |5          |5          |500        |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |8          |2          |wall       |5          |5          |1000       |           |Launch barbs all 4 vectors concurrently...                    5 arch
+DROP  |A-B        |12         |2          |wall       |5          |5          |1000       |           |Launch barbs all 4 vectors concurrently...                    5 arch

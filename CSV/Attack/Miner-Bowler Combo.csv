@@ -1,0 +1,47 @@
+NOTE  |Author: Swede inspired by Ahsan the Great
+NOTE  |Attack: Miner-Bowler Combo
+NOTE  |Make Troops: 20 miners, 22 bowlers, 4 WBs,
+NOTE  |Make Spells: 3 rage, 5 skeleton
+      |-----------------------------------------------------------------------------------------------|
+      |                                                                                               |
+      |                                                                                               |
+      |EXTR. GOLD |EXTR.ELIXIR|EXTR. DARK |DEPO. GOLD |DEPO.ELIXIR|DEPO. DARK |TOWNHALL   |FORCED SIDE|
+SIDE  |0          |0          |0          |0          |0          |0          |10         |EAGLE      |
+      |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|
+MAKE  |A          |FRONT-LEFT |10         |1          |INT-EXT    |0          |2          |           |
+MAKE  |B          |FRONT-RIGHT|10         |1          |INT-EXT    |0          |2          |           |
+MAKE  |C          |FRONT-LEFT |10         |4          |INT-EXT    |0          |3          |           |
+MAKE  |D          |FRONT-RIGHT|10         |4          |INT-EXT    |0          |3          |           |
+MAKE  |H          |FRONT-LEFT |10         |-7         |INT-EXT    |0          |0          |           |
+MAKE  |I          |FRONT-LEFT |10         |-8         |INT-EXT    |0          |0          |           |
+MAKE  |J          |FRONT-LEFT |10         |-14        |INT-EXT    |0          |0          |           |
+MAKE  |K          |FRONT-LEFT |10         |-12        |INT-EXT    |0          |0          |           |
+MAKE  |L          |FRONT-LEFT |10         |-19        |INT-EXT    |0          |0          |           |
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |
+DROP  |A-B        |1,2        |10         |mine       |0          |0          |100-300    |           |drop miners
+DROP  |A          |6-10       |8          |bowl       |10-15      |0          |1500       |           |drop bowlers each front left
+DROP  |B          |6-10       |8          |bowl       |10-15      |0          |1500       |           |drop bowlers each front right
+DROP  |A-B        |1-4        |10         |bowl       |10-15      |0          |1000       |           |drop bowlers front mid
+DROP  |H          |1          |1          |RSpell     |0          |0          |0          |           |drop 1st rage spell
+DROP  |A          |1          |15         |mine       |0          |0          |100-300    |           |launch miners
+DROP  |A          |1          |5          |wall       |10         |0          |0          |           |launch wall breakers 
+DROP  |A          |1          |1          |king       |0          |0          |100-300    |           |launch king  
+DROP  |A          |1          |1          |queen      |0          |0          |100-300    |           |launch queen
+DROP  |A          |1          |1          |castle     |0          |0          |100-300    |           |launch castle  
+DROP  |A          |1          |1          |warden     |0          |0          |500        |           |launch warden
+DROP  |I          |1          |1          |RSpell     |0          |0          |0          |           |drop 2nd rage middle
+DROP  |A          |1          |1          |Remain     |0          |0          |0          |           |drop remaining shit
+      |DEFENSE____|OPTIONS____|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
+DROPS |EAGLE      |R:T,B:F,S:A|2          |SkSpell     |0          |0          |0          |           |
+WAIT  |6000-8000  |           |           |           |           |           |           |           |
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |
+DROP  |J          |1          |1          |RSpell     |0          |0          |0          |           |drop 2st rage middle
+      |DEFENSE____|OPTIONS____|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
+DROPS |INFERNO    |R:T,B:T,S:A|2          |SkSpell     |0          |0          |0          |           |
+DROP  |A          |1          |1          |king       |0          |0          |100-300    |           |brute activate king  
+DROP  |A          |1          |1          |queen      |0          |0          |100-300    |           |brute activate queen
+WAIT  |3000-4000  |           |           |           |           |           |           |           |
+      |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|           |
+DROP  |L          |1          |1          |RSpell     |0          |0          |0          |           |drop 3st rage middle
+DROP  |L          |1          |5          |SkSpell    |0          |0          |0          |           |
+DROP  |A          |1          |1          |warden     |0          |0          |500        |           |launch warden
