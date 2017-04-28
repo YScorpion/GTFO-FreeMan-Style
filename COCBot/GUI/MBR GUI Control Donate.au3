@@ -2253,7 +2253,8 @@ Func GTFOKICK($limit = 0)
 				If $debugSetlog = 1 Then SetLog("Check For To Kick Members", $COLOR_RED)
 				If $debugSetlog = 1 Then SetLog($sNum & " # x:" & $new[0] & " y:"  & $new[1], $COLOR_RED)
 
-				If $mDonated > 0 or $mReceived >= $GtfoReceiveCap then
+	;			If $mDonated > 0 or $mReceived >= $GtfoReceiveCap then
+				If $mDonated > 0 or $mReceived > 35 or $mReceived = 26  or $mReceived = 20 or $mReceived = 25 or $mReceived = 10 or $mReceived = 15 then
 					$sNum = getTrophyVillageSearch($new[0]-180,$new[1]-18)
 					Click($new[0], $new[1])
 					If _Sleep(250) Then ExitLoop
@@ -2299,7 +2300,8 @@ Func GTFOKICK($limit = 0)
 				EndIf
 
 			Else
-				if $Scroll > 3 then
+		;		if $Scroll > 3 then
+				if $Scroll > 4 then
 					If $debugSetlog = 1 Then SetLog("Kicking bottom members", $COLOR_RED)
 					If $KickPosX > 0 Then
 						If $debugSetlog = 1 Then SetLog($sNum & " # x:" & $KickPosX & " y:"  & $KickPosY, $COLOR_RED)
