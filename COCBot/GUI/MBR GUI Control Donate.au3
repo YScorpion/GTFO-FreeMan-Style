@@ -2023,8 +2023,9 @@ Func GtfoTrain()
 
 ;~ 	If GUICtrlRead($chkWaitForTroops) = $GUI_CHECKED and $GtfoTempTroopBoost = 0 Then
 	If GUICtrlRead($chkWaitForTroops) = $GUI_CHECKED Then
-		if $CurCampPer < 5 Then
-			GTFOKICK(5)
+		if $CurCampPer < 7 Then
+			ProcessFriendRequests()
+			GTFOKICK(3)
 			If GUICtrlRead($cmbTroopIdleTime) <> "Auto" Then
 				$aRemainTrainTroopTimer = Number(GUICtrlRead($cmbTroopIdleTime))
 			EndIf
@@ -2101,9 +2102,11 @@ Func GTFOKICK($limit = 0)
 		IsInGame()
 		GtfoIdle()
 		If $GtfoModStatus = $GtfoStop Then Return
-		if _Sleep(250) then ExitLoop
+;		if _Sleep(250) then ExitLoop
+		if _Sleep(1400) then ExitLoop
 		Click(150, 60)
-		If _Sleep(250) Then ExitLoop
+;		If _Sleep(250) Then ExitLoop
+		If _Sleep(150) Then ExitLoop
 		$loopcount = 0
 
 		While _ColorCheck( _GetPixelColor(60, 350, True), Hex(0x65B010, 6), 20) == False ;- Check Green pixel on warlog Button
@@ -2218,8 +2221,10 @@ Func GTFOKICK($limit = 0)
 				$KickPosY = $new[1]
 
 				$mDonated = Int(Number(getOcrAndCapture("coc-army",$new[0]+280,$new[1]-10, 70, 14, True)))
+				$mReceived = Int(Number(getOcrAndCapture("coc-army",$new[0]+400,$new[1]-10, 70, 14, True)))
 
-				if $mDonated > 0  Then
+;				if $mDonated > 0  Then
+				if $mDonated > 0 or $mReceived > 40 Then
 					$mReceived = 999999
 				Else
 					if( GUICtrlRead($chkKickMode) <> 1 ) Then
@@ -2302,6 +2307,7 @@ Func GTFOKICK($limit = 0)
 			Else
 		;		if $Scroll > 3 then
 				if $Scroll > 4 then
+					#cs
 					If $debugSetlog = 1 Then SetLog("Kicking bottom members", $COLOR_RED)
 					If $KickPosX > 0 Then
 						If $debugSetlog = 1 Then SetLog($sNum & " # x:" & $KickPosX & " y:"  & $KickPosY, $COLOR_RED)
@@ -2316,10 +2322,12 @@ Func GTFOKICK($limit = 0)
 						If _Sleep(250) Then ExitLoop
 						Click(520, 240)
 						$kicked += 1
-						SetLog("Player #" & $sNum & "  Donated : " & $mDonated &  " - Received : " & $mReceived & " has been kicked out", $COLOR_RED)
+						SetLog("Player #" & $sNum & "  Donated : " & $mDonated &  " - Received : " & $mReceived & " has been kicked out (Bottom)", $COLOR_RED)
 					Else
 						If $debugSetlog = 1 Then SetLog("no members to kick", $COLOR_RED)
 					EndIf
+					#ce
+					SetLog("No members to kick", $COLOR_RED)
 					ExitLoop 2
 				Else
 					ClickDrag(430,665,430,115)
@@ -2668,9 +2676,9 @@ Func ProcessFriendRequests()
 	EndIf
 
 	Click(680, 85, 1, 250)
-	If _Sleep(2000) Then Return
+	If _Sleep(800) Then Return
 	Click(430, 140, 1, 250)
-	If _Sleep(5000) Then Return
+	If _Sleep(1000) Then Return
 	Local $RequiredLevel = -1
 
 
@@ -2725,9 +2733,9 @@ Func ProcessFriendRequests()
 		Else
 			if $RequiredLevel = -1 Then
 				Click($posPoint1[1]+60,$posPoint1[2], 1, 50)
-				If _Sleep(3000) Then Return
+				If _Sleep(800) Then Return
 				Click(510,420, 1, 50)
-				If _Sleep(3000) Then Return
+				If _Sleep(800) Then Return
 				Setlog("Friend Request Rejected",$COLOR_RED)
 			Else
 				$x_start = 176
@@ -2738,15 +2746,15 @@ Func ProcessFriendRequests()
 ;~ 				SetLog("Player Level: " & getOcrAndCapture("coc-qqtroop", $x_start, $y_start, 30, 20, True))
 				If $CurrentReqPlayerLvl >= $RequiredLevel Then
 					Click($posPoint1[1],$posPoint1[2], 1, 50)
-					If _Sleep(3000) Then Return
+					If _Sleep(800) Then Return
 					Click(510,420, 1, 50)
-					If _Sleep(3000) Then Return
+					If _Sleep(800) Then Return
 					Setlog("Friend Request Accepted",$COLOR_GREEN)
 				Else
 					Click($posPoint1[1]+60,$posPoint1[2], 1, 50)
-					If _Sleep(3000) Then Return
+					If _Sleep(800) Then Return
 					Click(510,420, 1, 50)
-					If _Sleep(3000) Then Return
+					If _Sleep(800) Then Return
 					Setlog("Level: "  & $CurrentReqPlayerLvl & " - Friend Request Rejected",$COLOR_RED)
 				EndIf
 
@@ -2765,7 +2773,7 @@ Func ProcessFriendRequests()
 
 		_captureregion()
 		$res  = isImageVisible("FriendAdd",@ScriptDir & "\images\friendAdd_0_0_85.bmp","730,170,770,600")
-		If _Sleep(5000) Then Return
+		If _Sleep(1000) Then Return
 	WEnd
 
 
