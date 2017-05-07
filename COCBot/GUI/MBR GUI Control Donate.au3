@@ -1775,6 +1775,7 @@ Func GtfoTrain()
 	Local $tempDElixir = ""
 	Local $tempElixirSpent = 0
 	Local $tempDElixirSpent = 0
+	Local $CurCampPer
 
 	ClickP($aCloseChat, 1, 0, "#0168")
 	_Sleep($iDelayTrain1)
@@ -1963,7 +1964,7 @@ Func GtfoTrain()
 		EndIf
 
 
-		if $CurCampPer < 5 Then
+		if $CurCampPer < 7 Then
 			Click(30, 140, 1, 0, "#0293")
 			If WaitforPixel(30, 140 , 240, 145 , Hex(0xE8ECE0, 6), 10, 10) Then
 				Local $TimeRemainTroops = getRemainTrainTimer(756, 169)
@@ -2021,6 +2022,12 @@ Func GtfoTrain()
 
 	checkAttackDisable($iTaBChkIdle)
 
+;~~~~~~~~~~~~~~~~ADD RANDOM PERCENT FOR SMARTWAIT~~~~~~~~~~~~~~~~
+
+Local $RandomAddPercent = Random(0, 15 / 100)
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ;~ 	If GUICtrlRead($chkWaitForTroops) = $GUI_CHECKED and $GtfoTempTroopBoost = 0 Then
 	If GUICtrlRead($chkWaitForTroops) = $GUI_CHECKED Then
 		if $CurCampPer < 7 Then
@@ -2028,11 +2035,14 @@ Func GtfoTrain()
 			GTFOKICK(3)
 			If GUICtrlRead($cmbTroopIdleTime) <> "Auto" Then
 				$aRemainTrainTroopTimer = Number(GUICtrlRead($cmbTroopIdleTime))
+				Local $aRemainTrainTroopTimerRand = ($aRemainTrainTroopTimer  + ( $aRemainTrainTroopTimer * $RandomAddPercent ))
 			EndIf
-			SetLog("GTFO: Smart wait train time = " & $aRemainTrainTroopTimer & " Minutes", $color_info)
+	;		SetLog("GTFO: Smart wait train time = " & $aRemainTrainTroopTimer & " Minutes", $color_info)
+			Setlog("GTFO: Smart wait train time = " & StringFormat("%.2f", $aRemainTrainTroopTimerRand ) & " Minutes", $COLOR_INFO)
 			WinGetAndroidHandle()
 			AndroidHomeButton()
-			If _SleepStatus($aRemainTrainTroopTimer * 1000 * 60) Then Return
+	;		If _SleepStatus($aRemainTrainTroopTimer * 1000 * 60) Then Return
+			If _SleepStatus($aRemainTrainTroopTimerRand * 1000 * 60) Then Return
 
 			_GUICtrlEdit_SetText($txtLog, _PadStringCenter(" GTFO LOG ", 71, "="))
 			_GUICtrlRichEdit_SetFont($txtLog, 6, "Lucida Console")
@@ -2102,8 +2112,8 @@ Func GTFOKICK($limit = 0)
 		IsInGame()
 		GtfoIdle()
 		If $GtfoModStatus = $GtfoStop Then Return
-;		if _Sleep(250) then ExitLoop
-		if _Sleep(1400) then ExitLoop
+		if _Sleep(250) then ExitLoop
+;		if _Sleep(1400) then ExitLoop
 		Click(150, 60)
 ;		If _Sleep(250) Then ExitLoop
 		If _Sleep(150) Then ExitLoop
@@ -2224,7 +2234,7 @@ Func GTFOKICK($limit = 0)
 				$mReceived = Int(Number(getOcrAndCapture("coc-army",$new[0]+400,$new[1]-10, 70, 14, True)))
 
 ;				if $mDonated > 0  Then
-				if $mDonated > 0 or $mReceived > 40 Then
+				if $mDonated > 0 or $mReceived > 37 Then
 					$mReceived = 999999
 				Else
 					if( GUICtrlRead($chkKickMode) <> 1 ) Then
@@ -2259,7 +2269,7 @@ Func GTFOKICK($limit = 0)
 				If $debugSetlog = 1 Then SetLog($sNum & " # x:" & $new[0] & " y:"  & $new[1], $COLOR_RED)
 
 	;			If $mDonated > 0 or $mReceived >= $GtfoReceiveCap then
-				If $mDonated > 0 or $mReceived > 35 or $mReceived = 26  or $mReceived = 20 or $mReceived = 25 or $mReceived = 10 or $mReceived = 15 then
+				If $mDonated > 0 or $mReceived > 37 or $mReceived = 26  or $mReceived = 20 or $mReceived = 25 or $mReceived = 10 or $mReceived = 15 then
 					$sNum = getTrophyVillageSearch($new[0]-180,$new[1]-18)
 					Click($new[0], $new[1])
 					If _Sleep(250) Then ExitLoop
@@ -2305,8 +2315,7 @@ Func GTFOKICK($limit = 0)
 				EndIf
 
 			Else
-		;		if $Scroll > 3 then
-				if $Scroll > 4 then
+				if $Scroll > 3 then
 					#cs
 					If $debugSetlog = 1 Then SetLog("Kicking bottom members", $COLOR_RED)
 					If $KickPosX > 0 Then
@@ -2327,7 +2336,7 @@ Func GTFOKICK($limit = 0)
 						If $debugSetlog = 1 Then SetLog("no members to kick", $COLOR_RED)
 					EndIf
 					#ce
-					SetLog("No members to kick", $COLOR_RED)
+					SetLog("ALL Good for now, No Members to Kick", $COLOR_ORANGE)
 					ExitLoop 2
 				Else
 					ClickDrag(430,665,430,115)
